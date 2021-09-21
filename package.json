@@ -1,0 +1,24 @@
+{
+  "name": "ElectronGrup5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Silvia02/ElectronGrup5.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Silvia02/ElectronGrup5/issues"
+  },
+  "homepage": "https://github.com/Silvia02/ElectronGrup5#readme",
+  "devDependencies": {
+    "electron": "^14.0.1"
+  }
+}
