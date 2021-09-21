@@ -10,6 +10,7 @@ function createWindow() {
     const mainWindow = new BrowserWindow({
       width: 800,
       height: 600,
+      title:"The Shoe Shop"
       //https://leverans.rubinbarclay.dev/
     });
      mainWindow.loadURL("http://localhost:3000");  
