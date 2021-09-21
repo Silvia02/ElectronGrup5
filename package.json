@@ -1,11 +1,12 @@
 {
-  "name": "ElectronGrup5",
+  "name": "electrongrup5",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron ."
+    "start": "electron .",
+    "dev": "nodemon --exec electron ."
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,8 @@
   "homepage": "https://github.com/Silvia02/ElectronGrup5#readme",
   "devDependencies": {
     "electron": "^14.0.1"
+  },
+  "dependencies": {
+    "nodemon": "^2.0.12"
   }
 }
