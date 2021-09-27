@@ -1,3 +1,4 @@
+
 const { app, BrowserWindow, Menu } = require("electron");
 const remoteMain = require('@electron/remote/main');
 remoteMain.initialize();
@@ -41,8 +42,15 @@ function createMenu() {
     return val;
   });
 
-  const menu = Menu.buildFromTemplate(template);
-  Menu.setApplicationMenu(menu);
+    const menu = Menu.buildFromTemplate(template);
+    Menu.setApplicationMenu(menu);
+    title:"The Shoe Shop"
+      //http://localhost:3000
+    });
+  mainWindow.loadURL("https://leverans.rubinbarclay.dev/");
+  isMac && app.on('activate', function () {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow()
+  })
 }
 
 function menuClickHandler(menuItem) {
