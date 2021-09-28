@@ -1,6 +1,8 @@
 
 const { app, BrowserWindow, Menu } = require('electron');
+const { download } = require('electron-dl');
 const remoteMain = require('@electron/remote/main');
+const { ipcMain } = require('electron/main');
 remoteMain.initialize();
 let mainWindow;
 
@@ -11,13 +13,15 @@ function createWindow() {
     webPreferences: {
       nativeWindowOpen: true,
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
+     
     }
   });
-
+ 
   remoteMain.enable(mainWindow.webContents);
-  mainWindow.loadURL('https://leverans.rubinbarclay.dev/');
+  mainWindow.loadURL('http://localhost:3000');
   mainWindow.show();
+  mainWindow.webContents.openDevTools();
   mainWindow.on('closed', function () {
     mainWindow = null
   })
@@ -45,8 +49,19 @@ function createMenu() {
 
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
+  title: "The Shoe Shop"
 }
 
+let menuEvents = {
+  'Reload': () => console.log('Reload!'),
+  'Learn more': () => console.log('Learn more'),
+  'Toggle Developer Tools': (item, focusedWindow) => {
+    console.log('Toggle Developer Tools');
+    if (focusedWindow) {
+      focusedWindow.webContents.toggleDevTools();
+    }
+  }
+};
 function menuClickHandler(menuItem) {
   mainWindow.webContents.send('menuChoice', menuItem.label);
 }
@@ -59,6 +74,7 @@ app.on('window-all-closed', function () {
 });
 
 app.on('activate', function () {
+  //if(BrowserWindow.getAllWindow().length===0) createWindow()
   if (mainWindow === null) {
     createWindow()
   }
