@@ -20,8 +20,8 @@
   },
   "homepage": "https://github.com/Silvia02/ElectronGrup5#readme",
   "devDependencies": {
-    "electron": "^14.0.1",
     "@electron/remote": "^2.0.1",
-    "nodemon": "^2.0.12"
+    "electron": "^14.0.1",
+    "nodemon": "^2.0.13"
   }
 }
