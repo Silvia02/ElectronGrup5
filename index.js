@@ -1,5 +1,5 @@
 
-const { app, BrowserWindow, Menu } = require('electron');
+const {app, BrowserWindow, Menu} = require('electron');
 const remoteMain = require('@electron/remote/main');
 remoteMain.initialize();
 let mainWindow;
@@ -11,12 +11,15 @@ function createWindow() {
     webPreferences: {
       nativeWindowOpen: true,
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
+      enableRemoteModule: true,
     }
   });
 
+  mainWindow.webContents.openDevTools();
+
   remoteMain.enable(mainWindow.webContents);
-  mainWindow.loadURL('https://leverans.rubinbarclay.dev/');
+  mainWindow.loadURL('http://localhost:3000', {userAgent: 'Electron'});
   mainWindow.show();
   mainWindow.on('closed', function () {
     mainWindow = null
@@ -45,7 +48,6 @@ function createMenu() {
 
   const menu = Menu.buildFromTemplate(template);
   Menu.setApplicationMenu(menu);
-  title: "The Shoe Shop"
 }
 
 function menuClickHandler(menuItem) {
