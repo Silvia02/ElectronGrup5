@@ -9,6 +9,9 @@ function createWindow() {
     width: 800,
     height: 600,
     icon:__dirname+'/icon.ico',
+    width: 900,
+    height: 700,
+
     webPreferences: {
       nativeWindowOpen: true,
       nodeIntegration: true,
