@@ -1,13 +1,17 @@
-
-const {app, BrowserWindow, Menu} = require('electron');
+const {
+  app,
+  BrowserWindow,
+  Menu
+} = require('electron');
 const remoteMain = require('@electron/remote/main');
 remoteMain.initialize();
 let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 900,
-    height: 700,
+    width: 800,
+    height: 600,
+    icon: __dirname + '/icon.ico',
     webPreferences: {
       nativeWindowOpen: true,
       nodeIntegration: true,
@@ -16,16 +20,19 @@ function createWindow() {
     }
   });
 
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   remoteMain.enable(mainWindow.webContents);
-  mainWindow.loadURL('http://localhost:3000', {userAgent: 'Electron'});
+  mainWindow.loadURL('https://leverans.rubinbarclay.dev/', {
+    userAgent: 'Electron'
+  });
   mainWindow.show();
   mainWindow.on('closed', function () {
     mainWindow = null
   })
 
 }
+
 function createMenu() {
   let template = require('./menu-choices/menu.json');
   let mac = require('./menu-choices/mac-specific.json');
